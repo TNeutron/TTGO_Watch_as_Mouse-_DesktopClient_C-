@@ -1,0 +1,11 @@
+E:\C#\TTGOasMouse\TTGOasMouse\TTGOasMouse\bin\Debug\TTGOasMouse.exe.config
+E:\C#\TTGOasMouse\TTGOasMouse\TTGOasMouse\bin\Debug\TTGOasMouse.exe
+E:\C#\TTGOasMouse\TTGOasMouse\TTGOasMouse\bin\Debug\TTGOasMouse.pdb
+E:\C#\TTGOasMouse\TTGOasMouse\TTGOasMouse\obj\Debug\TTGOasMouse.csproj.AssemblyReference.cache
+E:\C#\TTGOasMouse\TTGOasMouse\TTGOasMouse\obj\Debug\TTGOasMouse.csproj.SuggestedBindingRedirects.cache
+E:\C#\TTGOasMouse\TTGOasMouse\TTGOasMouse\obj\Debug\TTGOasMouse.Properties.Resources.resources
+E:\C#\TTGOasMouse\TTGOasMouse\TTGOasMouse\obj\Debug\TTGOasMouse.csproj.GenerateResource.cache
+E:\C#\TTGOasMouse\TTGOasMouse\TTGOasMouse\obj\Debug\TTGOasMouse.csproj.CoreCompileInputs.cache
+E:\C#\TTGOasMouse\TTGOasMouse\TTGOasMouse\obj\Debug\TTGOasMouse.exe
+E:\C#\TTGOasMouse\TTGOasMouse\TTGOasMouse\obj\Debug\TTGOasMouse.pdb
+E:\C#\TTGOasMouse\TTGOasMouse\TTGOasMouse\obj\Debug\TTGOasMouse.Form1.resources

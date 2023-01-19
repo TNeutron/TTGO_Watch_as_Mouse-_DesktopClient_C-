@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.IO.Ports;
 using System.Runtime.InteropServices;
 using System.Threading;
-
+using System.Diagnostics;
 
 namespace TTGOasMouse {
 
@@ -61,15 +61,15 @@ namespace TTGOasMouse {
                     _serialPort.Open();
                     button1.BackColor = Color.Red;
                     _continue = true;
-                    button1.Text = "Close Port";
+                    button1.Text = "Close";
                     readThread = new Thread(Read);
                     readThread.Start();
                 } catch (Exception eee) {
                     MessageBox.Show(eee.Message);
                 }
             }  else {
-                button1.BackColor = Color.Yellow;
-                button1.Text = "Open Port";
+                button1.BackColor = Color.OliveDrab;
+                button1.Text = "Begin";
                 //readThread.Abort();
                 _serialPort.Close();
                 _continue = false;
@@ -85,7 +85,7 @@ namespace TTGOasMouse {
                 String x = newText.Split(',')[0];
                 String y = newText.Split(',')[1];
                 richTextBox1.AppendText("X: " + x + "   Y: " + y);
-                VirtualMouse.MoveTo(Int16.Parse(x), Int16.Parse(y));
+                VirtualMouse.Move(Int16.Parse(x), Int16.Parse(y));
             }
             richTextBox1.ScrollToCaret();
         }
@@ -116,6 +116,40 @@ namespace TTGOasMouse {
         private void richTextBox1_TextChanged(object sender, EventArgs e) {
 
         }
+
+        private void pictureBox3_Click(object sender, EventArgs e) {
+            Process.Start("https://www.youtube.com/tnowroz");
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e) {
+            Process.Start("https://github.com/TNeutron");
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e) {
+            Process.Start("https://www.linkedin.com/in/tnowroz/"); 
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e) {
+            this.Close();
+        }
+
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern bool ReleaseCapture();
+
+        private void panel2_MouseDown(object sender, MouseEventArgs e) {
+
+            if (e.Button == MouseButtons.Left) {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+
+    }
+
     }
 
     public static class VirtualMouse {

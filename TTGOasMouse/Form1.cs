@@ -79,13 +79,22 @@ namespace TTGOasMouse {
         }
 
         private void UpdateLabel(string newText) {
-            if ((newText.ToLower()).Contains("clicked")) {
-                richTextBox1.AppendText("Click!\n");
+            if ((newText.ToLower()).Contains("left clicked!")) {
+                richTextBox1.AppendText("L_Click!\n");
+            } else if ((newText.ToLower()).Contains("right clicked!")) {
+                richTextBox1.AppendText("R_Click!\n");
+            } else if ((newText.ToLower()).Contains("close")) {
+                richTextBox1.AppendText("Exit\n");
             } else {
-                String x = newText.Split(',')[0];
-                String y = newText.Split(',')[1];
-                richTextBox1.AppendText("X: " + x + "   Y: " + y);
-                VirtualMouse.Move(Int16.Parse(x), Int16.Parse(y));
+                string x = newText.Split(',')[0];
+                string y = newText.Split(',')[1];
+                string touched = newText.Split(',')[2];
+
+                int a = Int16.Parse(x) - 120;
+                int b = Int16.Parse(y) - 120;
+                richTextBox1.AppendText("X: " + a + "   Y: " + b + "   T: " + touched);
+                VirtualMouse.Move(a, b);
+
             }
             richTextBox1.ScrollToCaret();
         }

@@ -34,8 +34,6 @@ namespace TTGOasMouse {
 
         public Form1() {
             InitializeComponent();
-            //control = richTextBox1;
-
         }
 
         private void Subscribe(IKeyboardMouseEvents events) {
@@ -88,6 +86,7 @@ namespace TTGOasMouse {
                 // Set the read/write timeouts
                 _serialPort.ReadTimeout = 500;
                 _serialPort.WriteTimeout = 500;
+
                 try {
                     _serialPort.Open();
                     button1.BackColor = Color.Red;
@@ -95,9 +94,11 @@ namespace TTGOasMouse {
                     button1.Text = "Close";
                     readThread = new Thread(Read);
                     readThread.Start();
+
                 } catch (Exception eee) {
                     MessageBox.Show(eee.Message);
                 }
+
             }  else {
                 button1.BackColor = Color.OliveDrab;
                 button1.Text = "Begin";
@@ -113,11 +114,14 @@ namespace TTGOasMouse {
             if ((newText.ToLower()).Contains("left clicked!")) {
                 richTextBox1.AppendText("L_Click!\n");
                 VirtualMouse.LeftClick();
+
             } else if ((newText.ToLower()).Contains("right clicked!")) {
                 richTextBox1.AppendText("R_Click!\n");
                 VirtualMouse.RightClick();
+
             } else if ((newText.ToLower()).Contains("close")) {
                 richTextBox1.AppendText("Exit\n");
+
             } else {
                 
                 string x = newText.Split(',')[0];
@@ -238,22 +242,6 @@ namespace TTGOasMouse {
         private const int MOUSEEVENTF_MIDDLEDOWN = 0x0020;
         private const int MOUSEEVENTF_MIDDLEUP = 0x0040;
         private const int MOUSEEVENTF_ABSOLUTE = 0x8000;
-        /*
-                [DllImport("user32.dll")]
-                static extern bool GetCursorPos(out POINT lpPoint);
-
-
-                public static int ShowMousePosition() {
-                    POINT point;
-                    if (GetCursorPos(out point) && point.X != _x && point.Y != _y) {
-
-
-                        int x_post = point.X;
-                        return x_post;
-                    }
-                    return 0;
-
-                }*/
 
         public static float Remap(float value, float from1, float to1, float from2, float to2) {
             return (value - from1) / (to1 - from1) * (to2 - from2) + from2;

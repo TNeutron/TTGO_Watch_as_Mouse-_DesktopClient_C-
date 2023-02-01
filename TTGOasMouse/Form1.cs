@@ -11,6 +11,7 @@ using System.IO.Ports;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Diagnostics;
+using Gma.System.MouseKeyHook;
 
 namespace TTGOasMouse {
 
@@ -19,12 +20,41 @@ namespace TTGOasMouse {
         public String ReadSerialVal;
         static bool _continue = false;
         public static SerialPort _serialPort = new SerialPort();
+        
+        public String touched_temp = "0";
+        public int pos_x = 0, pos_y = 0, m_x, m_y;
+        public int a, b;
 
+        public int total_x, total_y;
+
+        [DllImport("user32.dll", SetLastError = true)]
+        public static extern bool SetCursorPos(int X, int Y);
+
+        private IKeyboardMouseEvents m_Events;
 
         public Form1() {
             InitializeComponent();
             //control = richTextBox1;
+
         }
+
+        private void Subscribe(IKeyboardMouseEvents events) {
+            m_Events = events;
+            m_Events.MouseMove += M_Events_MouseMove;
+        }
+
+        private void Unsubscribe() {
+            if (m_Events == null) return;
+            m_Events.MouseMove -= M_Events_MouseMove;
+            m_Events.Dispose();
+            m_Events = null;
+        }
+
+        private void M_Events_MouseMove(object sender, MouseEventArgs e) {
+            m_x = e.X;
+            m_y = e.Y;
+        }
+
 
         private void label2_Click(object sender, EventArgs e) {
 
@@ -38,7 +68,8 @@ namespace TTGOasMouse {
         }
 
         private void Form1_Load(object sender, EventArgs e) {
-            VirtualMouse.MoveTo(1000, 0);
+            Unsubscribe();
+            Subscribe(Hook.GlobalEvents());
 
         }
 
@@ -81,19 +112,47 @@ namespace TTGOasMouse {
         private void UpdateLabel(string newText) {
             if ((newText.ToLower()).Contains("left clicked!")) {
                 richTextBox1.AppendText("L_Click!\n");
+                VirtualMouse.LeftClick();
             } else if ((newText.ToLower()).Contains("right clicked!")) {
                 richTextBox1.AppendText("R_Click!\n");
+                VirtualMouse.RightClick();
             } else if ((newText.ToLower()).Contains("close")) {
                 richTextBox1.AppendText("Exit\n");
             } else {
+                
                 string x = newText.Split(',')[0];
                 string y = newText.Split(',')[1];
                 string touched = newText.Split(',')[2];
+                
 
-                int a = Int16.Parse(x) - 120;
-                int b = Int16.Parse(y) - 120;
-                richTextBox1.AppendText("X: " + a + "   Y: " + b + "   T: " + touched);
-                VirtualMouse.Move(a, b);
+                int a = int.Parse(x) - 120;
+                int b = int.Parse(y) - 120;
+
+                if (touched.Contains("1") && touched_temp.Contains("0")) {
+                    
+                    
+                    pos_x = m_x;
+                    pos_y = m_y;
+
+
+                    total_x = pos_x + a;
+                    total_y = pos_y + b;
+
+                    richTextBox1.AppendText("X: " + a + "   Y: " + b + "   T: " + touched+ "\n");
+                    VirtualMouse.MoveTo(pos_x + a, pos_y + b);
+
+                } else if(touched.Contains("1") && touched_temp.Contains("1")) {
+
+                    richTextBox1.AppendText("X: " + a + "   Y: " + b + "   T: " + touched);
+                    VirtualMouse.MoveTo(pos_x + a, pos_y + b);
+
+                } else {
+
+                    richTextBox1.AppendText("X: " + a + "   Y: " + b + "   T: " + touched);
+                    VirtualMouse.MoveTo(pos_x + a, pos_y + b);
+                    
+                }
+                touched_temp = touched;
 
             }
             richTextBox1.ScrollToCaret();
@@ -145,6 +204,10 @@ namespace TTGOasMouse {
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
 
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e) {
+            Unsubscribe();
+        }
+
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
         [System.Runtime.InteropServices.DllImport("user32.dll")]
@@ -163,7 +226,7 @@ namespace TTGOasMouse {
 
     public static class VirtualMouse {
 
-
+        
         [DllImport("user32.dll")]
 
         static extern void mouse_event(int dwFlags, int dx, int dy, int dwData, int dwExtraInfo);
@@ -175,7 +238,22 @@ namespace TTGOasMouse {
         private const int MOUSEEVENTF_MIDDLEDOWN = 0x0020;
         private const int MOUSEEVENTF_MIDDLEUP = 0x0040;
         private const int MOUSEEVENTF_ABSOLUTE = 0x8000;
+        /*
+                [DllImport("user32.dll")]
+                static extern bool GetCursorPos(out POINT lpPoint);
 
+
+                public static int ShowMousePosition() {
+                    POINT point;
+                    if (GetCursorPos(out point) && point.X != _x && point.Y != _y) {
+
+
+                        int x_post = point.X;
+                        return x_post;
+                    }
+                    return 0;
+
+                }*/
 
         public static float Remap(float value, float from1, float to1, float from2, float to2) {
             return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
@@ -218,6 +296,8 @@ namespace TTGOasMouse {
             mouse_event(MOUSEEVENTF_RIGHTUP, System.Windows.Forms.Control.MousePosition.X, System.Windows.Forms.Control.MousePosition.Y, 0, 0);
         }
     }
+
+
 
 
 

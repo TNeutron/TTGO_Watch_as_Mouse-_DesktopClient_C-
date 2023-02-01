@@ -31,3 +31,7 @@ C:\Users\PC\VScode_Projects\TTGO_Watch_as_Mouse-_DesktopClient_C-\TTGOasMouse\ob
 C:\Users\PC\VScode_Projects\TTGO_Watch_as_Mouse-_DesktopClient_C-\TTGOasMouse\obj\Debug\TTGOasMouse.csproj.CoreCompileInputs.cache
 C:\Users\PC\VScode_Projects\TTGO_Watch_as_Mouse-_DesktopClient_C-\TTGOasMouse\obj\Debug\TTGOasMouse.exe
 C:\Users\PC\VScode_Projects\TTGO_Watch_as_Mouse-_DesktopClient_C-\TTGOasMouse\obj\Debug\TTGOasMouse.pdb
+C:\Users\PC\VScode_Projects\TTGO_Watch_as_Mouse-_DesktopClient_C-\TTGOasMouse\bin\Debug\Gma.System.MouseKeyHook.dll
+C:\Users\PC\VScode_Projects\TTGO_Watch_as_Mouse-_DesktopClient_C-\TTGOasMouse\bin\Debug\Octokit.dll
+C:\Users\PC\VScode_Projects\TTGO_Watch_as_Mouse-_DesktopClient_C-\TTGOasMouse\bin\Debug\Octokit.xml
+C:\Users\PC\VScode_Projects\TTGO_Watch_as_Mouse-_DesktopClient_C-\TTGOasMouse\obj\Debug\TTGOasMouse.csproj.CopyComplete

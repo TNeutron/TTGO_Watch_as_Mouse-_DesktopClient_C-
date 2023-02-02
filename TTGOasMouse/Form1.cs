@@ -18,6 +18,7 @@ namespace TTGOasMouse {
     public partial class Form1 : Form {
         public Thread readThread;
         public String ReadSerialVal;
+
         static bool _continue = false;
         public static SerialPort _serialPort = new SerialPort();
         

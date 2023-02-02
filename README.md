@@ -19,8 +19,8 @@ TTGO T-Watch is an open source watch based on ESP32 SoC. This setup demonstrated
 ![Watch the video](https://youtu.be/AB10NJjFDsg)
 
 ## How to use -
-1)  Download and upload the required firmware for this. 
-    The ESP32 Firmware project for PlatformIO can be found in my profile or HERE.
+1)  Download and upload the required ![firmware](https://github.com/TNeutron/TTGO_Watch_as_Mouse_Firmware) for this. 
+    The ESP32 Firmware project for PlatformIO can be found in my profile or ![Click HERE](https://github.com/TNeutron/TTGO_Watch_as_Mouse_Firmware).
 2)  Download this desktop client.
 3)  Open the Desktop Client software and connect with your TTGO Bluetooth COM port. 
 4)  Go to the touch section of your TTGO.

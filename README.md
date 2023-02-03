@@ -16,7 +16,9 @@ TTGO T-Watch is an open source watch based on ESP32 SoC. This setup demonstrated
 
 ## Video Preview:
 
-![Watch the video](https://youtu.be/AB10NJjFDsg)
+![Youtube Video](https://i.imgur.com/IXqFRgfm.jpg) 
+
+![Watch the video](https://www.youtube.com/watch?v=AB10NJjFDsg)
 
 ## How to use -
 1)  Download and upload the required ![firmware](https://github.com/TNeutron/TTGO_Watch_as_Mouse_Firmware) for this. 

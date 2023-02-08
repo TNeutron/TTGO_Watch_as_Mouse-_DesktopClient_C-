@@ -3,7 +3,15 @@ C:\Users\PC\VScode_Projects\TTGO_Watch_as_Mouse-_DesktopClient_C-\TTGOasMouse\bi
 C:\Users\PC\VScode_Projects\TTGO_Watch_as_Mouse-_DesktopClient_C-\TTGOasMouse\bin\Release\TTGOasMouse.pdb
 C:\Users\PC\VScode_Projects\TTGO_Watch_as_Mouse-_DesktopClient_C-\TTGOasMouse\bin\Release\Gma.System.MouseKeyHook.dll
 C:\Users\PC\VScode_Projects\TTGO_Watch_as_Mouse-_DesktopClient_C-\TTGOasMouse\bin\Release\Octokit.dll
+C:\Users\PC\VScode_Projects\TTGO_Watch_as_Mouse-_DesktopClient_C-\TTGOasMouse\bin\Release\ScottPlot.dll
+C:\Users\PC\VScode_Projects\TTGO_Watch_as_Mouse-_DesktopClient_C-\TTGOasMouse\bin\Release\ScottPlot.WinForms.dll
+C:\Users\PC\VScode_Projects\TTGO_Watch_as_Mouse-_DesktopClient_C-\TTGOasMouse\bin\Release\System.Drawing.Common.dll
+C:\Users\PC\VScode_Projects\TTGO_Watch_as_Mouse-_DesktopClient_C-\TTGOasMouse\bin\Release\System.Numerics.Vectors.dll
+C:\Users\PC\VScode_Projects\TTGO_Watch_as_Mouse-_DesktopClient_C-\TTGOasMouse\bin\Release\System.ValueTuple.dll
 C:\Users\PC\VScode_Projects\TTGO_Watch_as_Mouse-_DesktopClient_C-\TTGOasMouse\bin\Release\Octokit.xml
+C:\Users\PC\VScode_Projects\TTGO_Watch_as_Mouse-_DesktopClient_C-\TTGOasMouse\bin\Release\ScottPlot.xml
+C:\Users\PC\VScode_Projects\TTGO_Watch_as_Mouse-_DesktopClient_C-\TTGOasMouse\bin\Release\System.Numerics.Vectors.xml
+C:\Users\PC\VScode_Projects\TTGO_Watch_as_Mouse-_DesktopClient_C-\TTGOasMouse\bin\Release\System.ValueTuple.xml
 C:\Users\PC\VScode_Projects\TTGO_Watch_as_Mouse-_DesktopClient_C-\TTGOasMouse\obj\Release\TTGOasMouse.csproj.AssemblyReference.cache
 C:\Users\PC\VScode_Projects\TTGO_Watch_as_Mouse-_DesktopClient_C-\TTGOasMouse\obj\Release\TTGOasMouse.csproj.SuggestedBindingRedirects.cache
 C:\Users\PC\VScode_Projects\TTGO_Watch_as_Mouse-_DesktopClient_C-\TTGOasMouse\obj\Release\TTGOasMouse.Form1.resources

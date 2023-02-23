@@ -6,6 +6,10 @@ Implementation of a simple idea of sending the touch coordinates to the Computer
 
 TTGO T-Watch is an open source watch based on ESP32 SoC. This setup demonstrated here is tested working on the version "TTGO T-Watch 2020".
 
+## Components Required:
+**1)** TTGO T-Watch 2020: https://cutt.ly/w8rlWbl (AliExpress Link)
+
+
 ## The UI Preview: 
 
 ![Imgur](https://i.imgur.com/W3Qo3brl.png)

@@ -12,6 +12,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Diagnostics;
 using Gma.System.MouseKeyHook;
+using System.IO;
 
 namespace TTGOasMouse {
 
@@ -111,54 +112,86 @@ namespace TTGOasMouse {
 
         }
 
+        static void WriteToCSV(string filePath, string[] data)
+        {
+            // Create a new StreamWriter and open the file for writing
+            using (StreamWriter writer = new StreamWriter(filePath, append: true))
+            {
+                // Write each line of data to the file
+                foreach (string line in data)
+                {
+                    writer.WriteLine(line);
+                }
+            }
+        }
+
         private void UpdateLabel(string newText) {
-            if ((newText.ToLower()).Contains("left clicked!")) {
-                richTextBox1.AppendText("L_Click!\n");
-                VirtualMouse.LeftClick();
-
-            } else if ((newText.ToLower()).Contains("right clicked!")) {
-                richTextBox1.AppendText("R_Click!\n");
-                VirtualMouse.RightClick();
-
-            } else if ((newText.ToLower()).Contains("close")) {
-                richTextBox1.AppendText("Exit\n");
-
-            } else {
-                
-                string x = newText.Split(',')[0];
-                string y = newText.Split(',')[1];
-                string touched = newText.Split(',')[2];
-                
-
-                int a = int.Parse(x) - 120;
-                int b = int.Parse(y) - 120;
-
-                if (touched.Contains("1") && touched_temp.Contains("0")) {
-                    
-                    
-                    pos_x = m_x;
-                    pos_y = m_y;
+            if(checkBox1.Checked) { 
 
 
-                    total_x = pos_x + a;
-                    total_y = pos_y + b;
+                if ((newText.ToLower()).Contains("left clicked!")) {
+                    richTextBox1.AppendText("L_Click!\n");
+                    VirtualMouse.LeftClick();
 
-                    richTextBox1.AppendText("X: " + a + "   Y: " + b + "   T: " + touched+ "\n");
-                    VirtualMouse.MoveTo(pos_x + a, pos_y + b);
+                } else if ((newText.ToLower()).Contains("right clicked!")) {
+                    richTextBox1.AppendText("R_Click!\n");
+                    VirtualMouse.RightClick();
 
-                } else if(touched.Contains("1") && touched_temp.Contains("1")) {
-
-                    richTextBox1.AppendText("X: " + a + "   Y: " + b + "   T: " + touched);
-                    VirtualMouse.MoveTo(pos_x + a, pos_y + b);
+                } else if ((newText.ToLower()).Contains("close")) {
+                    richTextBox1.AppendText("Exit\n");
 
                 } else {
+                
+                    string x = newText.Split(',')[0];
+                    string y = newText.Split(',')[1];
+                    string touched = newText.Split(',')[2];
+                
 
-                    richTextBox1.AppendText("X: " + a + "   Y: " + b + "   T: " + touched);
-                    VirtualMouse.MoveTo(pos_x + a, pos_y + b);
+                    int a = int.Parse(x) - 120;
+                    int b = int.Parse(y) - 120;
+
+                    if (touched.Contains("1") && touched_temp.Contains("0")) {
                     
-                }
-                touched_temp = touched;
+                    
+                        pos_x = m_x;
+                        pos_y = m_y;
 
+
+                        total_x = pos_x + a;
+                        total_y = pos_y + b;
+
+                        richTextBox1.AppendText("X: " + a + "   Y: " + b + "   T: " + touched+ "\n");
+                        VirtualMouse.MoveTo(pos_x + a, pos_y + b);
+
+                    } else if(touched.Contains("1") && touched_temp.Contains("1")) {
+
+                        richTextBox1.AppendText("X: " + a + "   Y: " + b + "   T: " + touched);
+                        VirtualMouse.MoveTo(pos_x + a, pos_y + b);
+
+                    } else {
+
+                        richTextBox1.AppendText("X: " + a + "   Y: " + b + "   T: " + touched);
+                        VirtualMouse.MoveTo(pos_x + a, pos_y + b);
+                    
+                    }
+                    touched_temp = touched;
+
+                }
+                
+            } else {
+
+                if (checkBox2.Checked)
+                {
+                    // File path for the CSV file
+                    string filePath = textBox2.Text;
+
+                    // Sample data to write to the CSV file
+                    string[] data = { newText };
+
+                    // Write data to the CSV file
+                    WriteToCSV(filePath, data);
+                }
+                richTextBox1.AppendText(newText);
             }
             richTextBox1.ScrollToCaret();
         }
